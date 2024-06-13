@@ -9,13 +9,13 @@ reverse-zMAP module is primarily designed for handling MS runs with relatively l
  in the meanwhile allows the modeling of sample-specific mean-variance trend, but it requires a biologically
  identical reference sample in each MS run for a subsequent integration across MS runs.
  
-# Workflow of zMAP
+# Workflow of reverse-zMAP
 
 ![Workflow of zMAP](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/reverse_zmap_workflow.png "zMAP Workflow")
 
 # Try it
 
-A Web-based application of zMAP is provided at http://bioinfo.sibs.ac.cn/shaolab/zMAP. 
+A Web-based application of reverse-zMAP is provided at http://bioinfo.sibs.ac.cn/shaolab/zMAP. 
 
 
 # Installation
@@ -45,9 +45,9 @@ conda install conda-forge::fastcluster #version 1.2.6
 
 ## R dependencies
 ```bat
-library(GSVA)  #version 1.46.0
-library(limma) #version 3.54.0
-library(GSEABase,quietly=TRUE) #version 1.60.0
+library(GSVA)  #version 1.28.0
+library(limma) #version 3.36.5
+library(GSEABase,quietly=TRUE) #version 1.42.0
 library(ConsensusClusterPlus) #version 1.62.0
 library(MatrixEQTL) #version 2.3 
 ```
@@ -95,7 +95,7 @@ Use the command shown as below:
 python $scriptPATH/SampleQC.py --z_statistic_matrix $inputdataPATH/reverse_zMAP_results/z_statistic_table.txt --sample_info $inputdataPATH/small_data_sample_info_add_internal_ref.txt --outdir $inputdataPATH/SampleQC
 ```
 
-### sample subgrouping
+### Sample subgrouping
 
 For delineating molecular subtypes at the protein level, this function is designed to select a subset of hypervariable proteins across samples. 
 It then undertakes unsupervised clustering on the samples, offering quantitative evidence to ascertain both the number and composition of potential
@@ -128,7 +128,7 @@ python $scriptPATH/SampleSubgrouping.py --z_statistic_matrix $inputdataPATH/cerv
 ### Gene set variation analysis
 GSVA calculates gene set enrichment scores (GSVA scores) for each sample using the z-statistic matrix.
 Differential expression analysis is then conducted on these GSVA scores using limma, aiming to identify differentially regulated pathways across sample groups. Finally, the differential pathway activities across sample groups are visualized using a heatmap.
-![GSVA of zMAP](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/zmap_gsva.png "zMAP_GSVA")
+![GSVA of zMAP](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/reverse-zMAP_gsva.png "zMAP_GSVA")
 
 Two input files provided by user:
 
@@ -216,7 +216,7 @@ python $scriptPATH/AssClinicalMolecular.py --z_statistic_matrix $inputdataPATH/c
 Plots the Kaplan-Meier survival curve and assesses the significance of survival differences among subgroups.
 
 
-![Survival analysis](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/AssClinicalMolecular.png "Survival analysis")
+![Survival analysis](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/survival_analysis.png "Survival analysis")
 
 One input file provided by user:
 
@@ -232,7 +232,7 @@ python $scriptPATH/sample_group_survival_analysis.py --input_file $inputdataPATH
 ### Association with survival data
 
 Cox proportional hazard regression model is used to identify prognostic markers based on z-statistic.
-![GSVA of zMAP](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/zmap_gsva.png "zMAP_GSVA")
+![AssociationSurvival](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/AssociationSurvival.png "AssociationSurvival")
 
 Two input files provided by user:
 
@@ -260,7 +260,7 @@ X was the non-silent somatic mutation indicators of the gene; S and A referred t
 respectively, as well as other control variables; ε was a vector of independent and identically distributed 
 noise variables; α, β, γ, and δ were unknown parameters. This model was fitted by applying the least squares method,
  and the null hypothesis β=0 was then tested by applying the t-test.
-![GSVA of zMAP](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/zmap_gsva.png "zMAP_GSVA")
+![AssMutation](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/AssMutation.png "AssMutation")
 
 Five input files provided by user:
 
@@ -269,17 +269,17 @@ Five input files provided by user:
 
 2. Mutation file
 
-	This file is a three-column, tab-delimited file with the first line identifying the columns. The column names are Sample_id, survival_time, and death_or_not.
+   Tab-delimited file where rows represent genes, columns represent samples, and values are coded as 1 for non-silent mutations and 0 for others. 
 	
 3. Covariates file
 
-    The file includes additional covariates. Columns represent samples, while rows encompass various additional covariates, 
+   The file includes additional covariates. Columns represent samples, while rows encompass various additional covariates, 
 	including age, sex, and others. The values inside must be numerical.
 
 4. Gene location file
 
-	The file containing transcription start site information for all genes in the genome. 
-	It contains three columns with the column names being gene, chromosome, and tss respectively.
+   The file containing transcription start site information for all genes in the genome. 
+	It contains three columns with the column names being gene, chromosome, and TSS respectively.
 
 5. Chromosome length file
     Tab-delimited file contains two columns, chromosome and length.
