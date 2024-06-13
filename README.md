@@ -8,6 +8,8 @@ reverse-zMAP module is primarily designed for handling MS runs with relatively l
  reverse-zMAP module alleviates the influence of outliers by repeatedly making pairwise comparisons, which
  in the meanwhile allows the modeling of sample-specific mean-variance trend, but it requires a biologically
  identical reference sample in each MS run for a subsequent integration across MS runs.
+
+ Contact: guixiuqi@gmail.com
  
 # Workflow of reverse-zMAP
 
@@ -128,6 +130,7 @@ python $scriptPATH/SampleSubgrouping.py --z_statistic_matrix $inputdataPATH/cerv
 ### Gene set variation analysis
 GSVA calculates gene set enrichment scores (GSVA scores) for each sample using the z-statistic matrix.
 Differential expression analysis is then conducted on these GSVA scores using limma, aiming to identify differentially regulated pathways across sample groups. Finally, the differential pathway activities across sample groups are visualized using a heatmap.
+
 ![GSVA of zMAP](https://github.com/guixiuqi/reverse-zMAP/blob/main/imgs/reverse-zMAP_gsva.png "zMAP_GSVA")
 
 Two input files provided by user:
