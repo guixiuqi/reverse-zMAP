@@ -25,7 +25,7 @@ A Web-based application of reverse-zMAP is provided at http://bioinfo.sibs.ac.cn
 The scripts of reverse-zMAP  require no installation and can be used in-place. Just install the dependencies (see below)
 
 ```python
-git clone https://github.com/guixiuqi/zMAP.git
+git clone https://github.com/guixiuqi/reverse-zMAP.git
 cd ./reverse-zMAP
 scriptPATH=./python_script
 export scriptPATH
