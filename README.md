@@ -304,6 +304,7 @@ python $scriptPATH/AssMutation.py --mutation_f $inputdataPATH/snp_df_10.txt --z_
 
 # Citation
 
-To cite the `zMAP` tools in publications, please cite zMAP toolset: model-based analysis of large-scale proteomic data via a variance stabilizing z-transformation.
+To cite the zMAP toolset in publications, please cite 
+Gui, X., Huang, J., Ruan, L. et al. zMAP toolset: model-based analysis of large-scale proteomic data via a variance stabilizing z-transformation. Genome Biol 25, 267 (2024). https://doi.org/10.1186/s13059-024-03382-9
 
 
