@@ -25,7 +25,7 @@ A Web-based application of reverse-zMAP is provided at http://bioinfo.sibs.ac.cn
 The scripts of reverse-zMAP  require no installation and can be used in-place. Just install the dependencies (see below)
 
 ```python
-git clone https://github.com/guixiuqi/zMAP.git
+git clone https://github.com/guixiuqi/reverse-zMAP.git
 cd ./reverse-zMAP
 scriptPATH=./python_script
 export scriptPATH
@@ -304,6 +304,7 @@ python $scriptPATH/AssMutation.py --mutation_f $inputdataPATH/snp_df_10.txt --z_
 
 # Citation
 
-To cite the `zMAP` tools in publications, please cite zMAP toolset: model-based analysis of large-scale proteomic data via a variance stabilizing z-transformation.
+To cite the zMAP toolset in publications, please cite 
+Gui, X., Huang, J., Ruan, L. et al. zMAP toolset: model-based analysis of large-scale proteomic data via a variance stabilizing z-transformation. Genome Biol 25, 267 (2024). https://doi.org/10.1186/s13059-024-03382-9
 
 
