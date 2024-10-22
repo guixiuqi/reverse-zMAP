@@ -47,9 +47,9 @@ def prepare_gsva_kegg(z_statistic_matrix,sample_info,gmt,outdir,type_="kegg",top
     out.write("library(GSVA)\n")
     out.write("library(limma)\n")
     out.write("library(GSEABase,quietly=TRUE)\n")
-    out.write('group_info <- read.csv("%s",sep="\\t",row.names = 1,stringsAsFactors = FALSE)\n'%sample_info)
+    out.write('group_info <- read.csv("%s",sep="\\t",row.names = 1,stringsAsFactors = FALSE,check.names=FALSE)\n'%sample_info)
   
-    out.write('data <- read.csv("%s",sep="\\t",row.names = 1)\n'%z_statistic_matrix)
+    out.write('data <- read.csv("%s",sep="\\t",row.names = 1,check.names=FALSE)\n'%z_statistic_matrix)
 
     out.write('common_names <- intersect(colnames(data), rownames(group_info))\n')
     out.write('data <- data[, common_names, drop = FALSE]\n')

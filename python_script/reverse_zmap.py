@@ -120,7 +120,7 @@ def normalization(raw_intensity_df,l=1.5):
     size_factor = np.array(sum_trimmed_intensity_list)/mean_of_sum_tirmmed_intensity
     normalized_intensity_df = raw_intensity_df.div(size_factor)
     
-    log2_normalized_intensity_df = np.log2(normalized_intensity_df+0.5)
+    log2_normalized_intensity_df = np.log2(normalized_intensity_df+1)
     plt.subplot(222)
     plt.scatter(log2_normalized_intensity_df[sample],
                 log2_normalized_intensity_df[ref],s=8,alpha=0.1)
