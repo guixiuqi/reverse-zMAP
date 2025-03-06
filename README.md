@@ -17,7 +17,7 @@ reverse-zMAP module is primarily designed for handling MS runs with relatively l
 
 # Try it
 
-A Web-based application of reverse-zMAP is provided at http://bioinfo.sibs.ac.cn/shaolab/zMAP. 
+A Web-based application of reverse-zMAP is provided at http://bioinfo.cemps.ac.cn/shaolab/zMAP. 
 
 
 # Installation
